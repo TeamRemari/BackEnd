@@ -10,12 +10,18 @@ Rails.application.routes.draw do
 					post :update_last_login
 					get :search
 					get :mutual_friend
+					post :upload_icon
 				end
 				member do
 					post :favorite
 					post :report
 					post :block
 				end
+			end
+			resources :foot_prints, only: [:create] do
+				collection do
+					get :mine_to
+					get :mine_from
 			end
 		end
 	end

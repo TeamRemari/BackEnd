@@ -1,6 +1,6 @@
 class Api::V1::UsersController < Api::V1::ApplicationController
 
-	before_action :authenticate, only: [:index, :show, :delete, :favorite, :report, :block, :search, :update_last_login]
+	before_action :authenticate, only: [:index, :show, :delete, :favorite, :report, :block, :search, :update_last_login, :upload_icon]
 
   	protect_from_forgery :except => [:sign_up, :sign_in]
 
@@ -117,6 +117,9 @@ class Api::V1::UsersController < Api::V1::ApplicationController
         					}
       					}
   		end
+  	end
+
+  	def upload_icon
   	end
 
   	def report

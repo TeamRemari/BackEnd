@@ -5,6 +5,7 @@ class User < ApplicationRecord
   	has_one  :facebook_auth, dependent: :destroy
   	has_many :blocks, dependent: :destroy
   	has_many :reports
+    has_many :foot_prints, dependent: :destroy
 
   	before_create :assign_authentication_token
 
