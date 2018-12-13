@@ -28,6 +28,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :icon
       t.boolean :is_sms_verified, default: false
       t.string :firebase_token
+      t.boolean :is_purchased, default: false
 
       t.datetime :deleted_at
 
