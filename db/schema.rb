@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_13_013043) do
+ActiveRecord::Schema.define(version: 2018_12_13_015811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "blocks", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "blockable_id"
+    t.string "blockable_type"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blockable_type", "blockable_id"], name: "index_blocks_on_blockable_type_and_blockable_id"
+  end
 
   create_table "facebook_auths", force: :cascade do |t|
     t.bigint "user_id"
@@ -29,6 +39,16 @@ ActiveRecord::Schema.define(version: 2018_12_13_013043) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "reportable_id"
+    t.string "reportable_type"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reportable_type", "reportable_id"], name: "index_reports_on_reportable_type_and_reportable_id"
   end
 
   create_table "users", force: :cascade do |t|

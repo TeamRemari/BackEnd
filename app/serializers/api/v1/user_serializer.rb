@@ -53,13 +53,17 @@ class Api::V1::UserSerializer < ActiveModel::Serializer
       def last_login_at
             object.last_login_at.to_i
       end
-      
+
       def created_at
             object.created_at.to_i
       end
 
       def updated_at
             object.updated_at.to_i
+      end
+
+      def current_user
+            scope[:current_user]
       end
 end
 
