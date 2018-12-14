@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 				collection do
 					get :mine_to
 					get :mine_from
+				end
 			end
 		end
 	end

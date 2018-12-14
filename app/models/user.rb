@@ -6,6 +6,7 @@ class User < ApplicationRecord
   	has_many :blocks, dependent: :destroy
   	has_many :reports
     has_many :foot_prints, dependent: :destroy
+    has_many :chat_rooms, dependent: :destroy
 
   	before_create :assign_authentication_token
 

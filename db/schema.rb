@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_13_015811) do
+ActiveRecord::Schema.define(version: 2018_12_13_035051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 2018_12_13_015811) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["blockable_type", "blockable_id"], name: "index_blocks_on_blockable_type_and_blockable_id"
+  end
+
+  create_table "chat_rooms", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "to_user_id"
+    t.integer "unread_count"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "facebook_auths", force: :cascade do |t|
@@ -39,6 +48,18 @@ ActiveRecord::Schema.define(version: 2018_12_13_015811) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "chat_room_id"
+    t.string "message_type", default: "Text", null: false
+    t.string "text"
+    t.string "attachment_url"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "read_flag", default: false, null: false
   end
 
   create_table "reports", force: :cascade do |t|
